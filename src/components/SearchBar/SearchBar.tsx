@@ -1,15 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSearch } from '../../context/SearchContext';
-import SearchDropdown from '../SearchDropdown/SearchDropdown';
-import { ReactComponent as MagnifyingGlassIcon } from '../../icons/magnifying-glass.svg';
-import { ReactComponent as XIcon } from '../../icons/x.svg';
-import styles from './SearchBar.module.css'
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSearch } from "../../context/SearchContext";
+import SearchDropdown from "../SearchDropdown/SearchDropdown";
+import { ReactComponent as MagnifyingGlassIcon } from "../../icons/magnifying-glass.svg";
+import { ReactComponent as XIcon } from "../../icons/x.svg";
+import styles from "./SearchBar.module.css";
 
 const SearchBar = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { value, setValue, searchAutocomplete, autocompleteItems } = useSearch();
+  const { value, setValue, searchAutocomplete, autocompleteItems } =
+    useSearch();
   const navigate = useNavigate();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -18,7 +19,7 @@ const SearchBar = () => {
     if (!isInputFocused) setIsInputFocused((prev) => !prev);
     setValue(event.target.value);
     searchAutocomplete(event.target.value);
-  }
+  };
 
   const handleClick = () => {
     inputRef.current?.focus();
@@ -27,27 +28,30 @@ const SearchBar = () => {
 
   const handleClear = (event: React.MouseEvent<SVGElement>) => {
     event.stopPropagation();
-    setValue('');
-    searchAutocomplete('');
+    setValue("");
+    searchAutocomplete("");
     inputRef.current?.focus();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && value !== '') {
+    if (e.key === "Enter" && value !== "") {
       navigate(`/search/${value}`);
     }
   };
 
   useEffect(() => {
     const handleClickOutside = (event: Event) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
         setIsInputFocused(false);
         setIsDropdownOpen(false);
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   useEffect(() => {
@@ -60,21 +64,27 @@ const SearchBar = () => {
         ref={wrapperRef}
         className={`
           ${styles.searchBarWrapper}
-          ${isInputFocused ? styles.focused : ''}
-          ${isDropdownOpen ? styles.resultsOpen : ''}
+          ${isInputFocused ? styles.focused : ""}
+          ${isDropdownOpen ? styles.resultsOpen : ""}
         `}
         onClick={handleClick}
       >
         <MagnifyingGlassIcon />
         <input
-          type='text'
+          type="text"
           value={value}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           ref={inputRef}
           autoFocus
         />
-        {!!value.length && <XIcon className={styles.xIcon} aria-label='Clear' onClick={handleClear} />}
+        {!!value.length && (
+          <XIcon
+            className={styles.xIcon}
+            aria-label="Clear"
+            onClick={handleClear}
+          />
+        )}
       </div>
       <SearchDropdown isOpen={isDropdownOpen} />
     </div>

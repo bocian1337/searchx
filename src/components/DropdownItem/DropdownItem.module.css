@@ -18,7 +18,8 @@
     fill: var(--grey-6);
   }
 
-  span, b {
+  span,
+  b {
     white-space: pre;
   }
 

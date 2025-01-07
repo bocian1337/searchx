@@ -1,10 +1,10 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSearch } from '../../context/SearchContext';
-import { SearchItem } from '../../types/SearchItem';
-import { ReactComponent as MagnifyingGlassIcon } from '../../icons/magnifying-glass.svg';
-import { ReactComponent as ClockIcon } from '../../icons/clock.svg';
-import styles from './DropdownItem.module.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useSearch } from "../../context/SearchContext";
+import { SearchItem } from "../../types/SearchItem";
+import { ReactComponent as MagnifyingGlassIcon } from "../../icons/magnifying-glass.svg";
+import { ReactComponent as ClockIcon } from "../../icons/clock.svg";
+import styles from "./DropdownItem.module.css";
 
 interface DropdownItemProps {
   item: SearchItem;
@@ -33,7 +33,7 @@ const DropdownItem = ({ item }: DropdownItemProps) => {
     <li
       className={`
         ${styles.dropdownItem}
-        ${isInHistory ? styles.inHistory : ''}
+        ${isInHistory ? styles.inHistory : ""}
       `}
       aria-label={item.title}
       onClick={handleClick}

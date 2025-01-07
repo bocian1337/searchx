@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useSearch } from '../../context/SearchContext';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import ResultsList from '../../components/ResultsList/ResultsList';
-import styles from './Results.module.css';
+import React, { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSearch } from "../../context/SearchContext";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import ResultsList from "../../components/ResultsList/ResultsList";
+import styles from "./Results.module.css";
 
 const Results = () => {
   const params = useParams<{ query: string }>();
@@ -11,8 +11,8 @@ const Results = () => {
   const { setValue, searchForResults } = useSearch();
 
   const handleReturnToHomePage = () => {
-    setValue('');
-    navigate('/');
+    setValue("");
+    navigate("/");
   };
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Results = () => {
       setValue(params.query);
       searchForResults(params.query);
     }
-  }, [params.query, setValue, searchForResults])
+  }, [params.query, setValue, searchForResults]);
 
   return (
     <>

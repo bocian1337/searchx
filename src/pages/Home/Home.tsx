@@ -1,6 +1,6 @@
-import React from 'react';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import styles from './Home.module.css';
+import React from "react";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import styles from "./Home.module.css";
 
 const Home = () => {
   return (
