@@ -1,0 +1,23 @@
+.dropdownWrapper {
+  position: absolute;
+  width: 100%;
+  background: var(--grey-1);
+  border-radius: 0 0 1.5rem 1.5rem;
+}
+
+.divider {
+  border-top: 1px solid var(--grey-4);
+  margin: 0 1.25rem;
+}
+
+.listWrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0;
+  padding-bottom: 1rem;
+  padding-top: 0.25rem;
+  margin: 0;
+  list-style: none;
+  font-size: 1rem;
+}

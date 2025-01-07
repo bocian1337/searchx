@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin-block: 2rem;
+  width: 100%;
+
+  h2 {
+    margin-right: 4rem;
+    cursor: pointer;
+  }
+}
