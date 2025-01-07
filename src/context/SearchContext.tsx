@@ -30,7 +30,7 @@ export const SearchProvider: React.FC<{ children: ReactNode }> = ({
   const [value, setValue] = useState("");
   const [autocompleteItems, setAutocompleteItems] = useState<SearchItem[]>([]);
   const [results, setResults] = useState<SearchItem[]>([]);
-  const [history, setHistory] = useState<number[]>([1]);
+  const [history, setHistory] = useState<number[]>([]);
   const [resultsNumber, setResultsNumber] = useState<number | null>(null);
   const [searchTime, setSearchTime] = useState<number | null>(null);
 
